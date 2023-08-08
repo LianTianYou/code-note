@@ -1,105 +1,5 @@
 # 1. Linux 命令
 
-## 目录
-
--   [1. 文件管理](#1-文件管理)
-    -   [1.1 浏览目录](#11-浏览目录)
-        -   [pwd 查看当前路径](#pwd-查看当前路径)
-        -   [cd 定位到指定目录](#cd-定位到指定目录)
-        -   [ls 列出当前目录下的文件](#ls-列出当前目录下的文件)
-        -   [tree 树状结构列出目录](#tree-树状结构列出目录)
-    -   [1.2 预览文件](#12-预览文件)
-        -   [cat 查看文件内容](#cat-查看文件内容)
-        -   [more 分页浏览](#more-分页浏览)
-        -   [less 预览文本](#less-预览文本)
-        -   [head 查看前10行](#head-查看前10行)
-        -   [tail 查看末尾10行](#tail-查看末尾10行)
-        -   [file 查看文件类型](#file-查看文件类型)
-        -   [du 查看占用空间](#du-查看占用空间)
-        -   [wc 字符统计](#wc-字符统计)
-        -   [md5sum 查看md5](#md5sum-查看md5)
-    -   [1.3 创建删除](#13-创建删除)
-        -   [touch 创建空白文件](#touch-创建空白文件)
-        -   [mkdir 创建目录](#mkdir-创建目录)
-        -   [rm 删除文件](#rm-删除文件)
-        -   [ln 创建软连接](#ln-创建软连接)
-    -   [1.4 复制移动](#14-复制移动)
-        -   [cp 复制文件](#cp-复制文件)
-        -   [mv 移动文件](#mv-移动文件)
-    -   [1.5 压缩与解压](#15-压缩与解压)
-        -   [zip 压缩文件](#zip-压缩文件)
-        -   [unzip 解压文件](#unzip-解压文件)
-        -   [zcat 查看压缩文件内容](#zcat-查看压缩文件内容)
-        -   [zipinfo 列出zip详细信息](#zipinfo-列出zip详细信息)
-        -   [gzip 压缩文件（.gz）](#gzip-压缩文件gz)
-        -   [gunzip  解压文件（.gz）](#gunzip--解压文件gz)
-        -   [tar 打包文件（.tar.gz）](#tar-打包文件targz)
--   [2. 文本处理](#2-文本处理)
-    -   [2.1 查找](#21-查找)
-        -   [find 查找文件](#find-查找文件)
-        -   [grep 查找文本](#grep-查找文本)
-        -   [which 查看命令的本地路径](#which-查看命令的本地路径)
--   [3. 终端显示](#3-终端显示)
-    -   [clear 清屏](#clear-清屏)
-    -   [echo 输出文本](#echo-输出文本)
-    -   [printf 格式化输出](#printf-格式化输出)
-    -   [history 命令历史记录](#history-命令历史记录)
-    -   [man 查看帮助](#man-查看帮助)
-    -   [alias 别名](#alias-别名)
-    -   [type 显示别名和所在位置](#type-显示别名和所在位置)
-    -   [bc 交互式计算器](#bc-交互式计算器)
--   [4. 系统相关](#4-系统相关)
-    -   [4.1 环境变量](#41-环境变量)
-        -   [export 添加临时变量](#export-添加临时变量)
-        -   [source 激活永久配置](#source-激活永久配置)
-    -   [4.2 用户相关](#42-用户相关)
-        -   [whoami 查看当前用户](#whoami-查看当前用户)
-        -   [su 使用管理员用户](#su-使用管理员用户)
-        -   [passwd 更改密码](#passwd-更改密码)
-        -   [logout 注销登录](#logout-注销登录)
-        -   [useradd 添加用户](#useradd-添加用户)
-        -   [usermod 修改用户信息](#usermod-修改用户信息)
-        -   [userdel 删除用户](#userdel-删除用户)
-        -   [groupadd 添加组](#groupadd-添加组)
-        -   [groupdel 删除组](#groupdel-删除组)
-        -   [groupmod 修改组名](#groupmod-修改组名)
-        -   [passwd 设置密码](#passwd-设置密码)
-        -   [sudo 管理员身份执行命令](#sudo-管理员身份执行命令)
-        -   [id 查看用户信息](#id-查看用户信息)
-    -   [4.3 时间日期](#43-时间日期)
-        -   [date 显示当前日期](#date-显示当前日期)
-        -   [cal 显示月历](#cal-显示月历)
-        -   [sleep 延时（秒）](#sleep-延时秒)
-    -   [4.4 包管理](#44-包管理)
-        -   [4.4.1 apt](#441-apt)
-        -   [4.4.2 rpm](#442-rpm)
-        -   [4.4.3 yum](#443-yum)
-        -   [4.4.4 snap](#444-snap)
-    -   [4.5 进程管理](#45-进程管理)
-        -   [ps 查看进程列表](#ps-查看进程列表)
-        -   [top 交互式显示进程](#top-交互式显示进程)
-        -   [pstree 树状图显示进程](#pstree-树状图显示进程)
-        -   [kill 结束进程](#kill-结束进程)
-        -   [4.5.1 后台运行](#451-后台运行)
-            -   [&](#)
-            -   [bg](#bg)
-            -   [nohup](#nohup)
-    -   [4.6 服务](#46-服务)
-        -   [service 服务操作](#service-服务操作)
-        -   [systemctl 管理服务](#systemctl-管理服务)
-    -   [4.7 网络相关](#47-网络相关)
-        -   [ifconfig 查看网卡信息](#ifconfig-查看网卡信息)
-        -   [ping 测试网络连通性](#ping-测试网络连通性)
-        -   [ssh 远程登录](#ssh-远程登录)
-        -   [wget 下载文件](#wget-下载文件)
-        -   [curl 网络请求](#curl-网络请求)
-        -   [关闭防火墙](#关闭防火墙)
-        -   [查看端口占用](#查看端口占用)
-        -   [全局代理](#全局代理)
--   [5. Shell 编程](#5-Shell-编程)
-    -   [5.1 系统变量](#51-系统变量)
-    -   [5.2 定义变量](#52-定义变量)
-
 [1.1 vim](https://www.wolai.com/8NKqVAxFqNrTUF78ZRbm8h "1.1 vim")
 
 # 1. 文件管理
@@ -321,12 +221,21 @@ unzip <压缩文件> 解压文件
 #### `tar` 打包文件（.tar.gz）
 
 ```bash
-tar -c <文件> -f <压缩文件路径>
-  -v 显示详细信息
-  -z 打包的同时压缩
-  -x 解压.tar文件
-tar xf  <压缩文件>  解压.tar文件
-tar xzf  <压缩文件>  解压.tar.gz文件
+tar -c <目标文件> -f <打包后文件>
+  -c  # 创建归档
+  -x  # 释放归档
+  -v  # 显示详细信息
+  -z  # 压缩（.gz（gzip）格式）
+  -t  # 列出文件内容
+  -f <打包文件>  # 指定归档文件（必须放在最后面）
+
+tar -cv <目标文件> -f <*.tar>      # 打包文件
+tar -cvf <*.tar> <目标文件>        # 打包文件
+tar -zcv <目标文件> -f <*.tar.gz>  # 压缩文件
+
+tar -xvf  <*.tar>        # 解包文件
+tar -xvf  <*.tar.gz>    # 解压文件
+tar -tf <*.tar>        # 查看打包文件内容
 ```
 
 # 2. 文本处理
@@ -427,9 +336,14 @@ sudo apt install manpages-zh  # 下载中文版
 
 #### `alias` 别名
 
+通过命令指定别名，仅当前会话有效。
+
+指定永久别名：在 shell 的配置文件中设置。
+
 ```bash
-alias <别名>=<命令>    # 指定别名（可以带参数）
-unalias               # 取消别名
+alias                  # 查看已定义的别名
+alias <别名>='<命令>'   # 指定别名（可以带参数）
+unalias <别名>         # 取消别名
 
 ```
 
@@ -445,6 +359,8 @@ type <命令>
 ```bash
 quit  # 退出
 ```
+
+
 
 # 4. 系统相关
 
@@ -485,23 +401,46 @@ init <序号>  设置运行级别（最常用3和5）
 
 ## 4.1 环境变量
 
-#### `export` 添加临时变量
+内置环境变量：`$USER`、`$PATH`、`$HOME`
+
+查看所有环境变量：`nev`
+
+#### `export` 临时环境变量
+
+```bash
+export 变量名=值
+```
+
+使用环境变量：
+
+```bash
+echo $变量名
+```
+
+追加 PATH 环境变量：
+
+-   命令行的指令存储在 PATH 环境变量中。
+-   添加二进制文件所在目录。
+
+```bash
+export PATH=$PATH:目录路径
+```
+
+#### `source` 激活永久配置
+
+添加 PATH 环境变量：
+
+-   编辑配置文件：`/etc/profile`，使用 export 追加环境变量。
+-   profile 文件会在开机时执行，加载环境变量。
 
 ```bash
 export PATH=$PATH:路径
 ```
 
-#### `source` 激活永久配置
-
-**添加永久环境变量**：
-
--   profile 文件对所有用户生效，会在系统启动时执行。
--   使用source可以无需重启系统，使配置生效。
+source 使配置即可生效，无需重启系统。
 
 ```bash
-vim /etc/profile  # 编辑环境变量
-  # 末尾加上 export PATH=$PATH:路径 
-source /etc/profile  # 激活配置
+source /etc/profile
 ```
 
 ## 4.2 用户相关
@@ -595,23 +534,45 @@ cal <年份>  指定年份
 
 ### 4.4.1 apt
 
+关于 apt：
+
+-   apt 基于 dpkg 实现的封装。
+-   dpkg 用于管理 .deb 包，处理依赖的能力较差。
+
+更新存储库：
+
+-   apt 在本地维护一个软件源的存储库，从本地搜索软件包。
+-   安装新版软件前，需要先更新存储库。
+
 > 换源：
-> [https://blog.csdn.net/xiangxianghehe/article/details/122856771](https://blog.csdn.net/xiangxianghehe/article/details/122856771 "https://blog.csdn.net/xiangxianghehe/article/details/122856771")[https://blog.csdn.net/fengyuyeguirenenen/article/details/128197920](https://blog.csdn.net/fengyuyeguirenenen/article/details/128197920 "https://blog.csdn.net/fengyuyeguirenenen/article/details/128197920")[https://developer.aliyun.com/mirror/ubuntu?spm=a2c6h.13651102.0.0.3e221b11JmfFir](https://developer.aliyun.com/mirror/ubuntu?spm=a2c6h.13651102.0.0.3e221b11JmfFir "https://developer.aliyun.com/mirror/ubuntu?spm=a2c6h.13651102.0.0.3e221b11JmfFir")
+> [https://blog.csdn.net/xiangxianghehe/article/details/122856771](https://blog.csdn.net/xiangxianghehe/article/details/122856771 "https://blog.csdn.net/xiangxianghehe/article/details/122856771")
+> [https://blog.csdn.net/fengyuyeguirenenen/article/details/128197920](https://blog.csdn.net/fengyuyeguirenenen/article/details/128197920 "https://blog.csdn.net/fengyuyeguirenenen/article/details/128197920")
+> [https://developer.aliyun.com/mirror/ubuntu?spm=a2c6h.13651102.0.0.3e221b11JmfFir](https://developer.aliyun.com/mirror/ubuntu?spm=a2c6h.13651102.0.0.3e221b11JmfFir "https://developer.aliyun.com/mirror/ubuntu?spm=a2c6h.13651102.0.0.3e221b11JmfFir")
 
 ```bash
-查询安装的包
-dpkg --get-selections | grep -i <包名>
-
-apt install <包名>  添加包
-apt search <包名>  搜索包
-apt list --installed  列出已安装的包
-apt list --upgradeable  列出可升级的包
-apt remove <包名>  移除包
-apt purge <包名>  移除包和配置文件
-apt show <包名>  显示包的详细信息
-apt upgrade <包名>  更新包（无参数更新所有包）
-apt update <包名>  更新包列表
+apt update    # 更新软件源存储库
+apt install <包名>    # 联网安装包
+apt install xxx.deb  # 安装 deb 包
+apt search <包名>     # 查找包（支持正则表达式）
+apt list --installed    # 列出已安装的包
+apt list --upgradeable  # 列出可升级的包
+apt remove <包名>   # 移除包（仅删除二进制程序）
+apt purge <包名>    # 移除包和配置文件
+apt show <包名>     # 显示包的详细信息
+apt upgrade        # 更新所有软件包
+apt upgrade <包名>  # 更新指定软件包
+apt clean          # 清理已下载的包
 ```
+
+dpkg：
+
+```bash
+dpkg -L <包名>    # 查看包的本地文件
+```
+
+【错误提示】WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+-   apt 不适合在脚本中执行，因为它不够稳定。通常使用 apt-get 等命令替代。
 
 安装vm tools：
 
@@ -654,6 +615,11 @@ snap find <包名>  查找包
 snap refresh <包名>  更新包
 snap remove <包名>  卸载包
 ```
+
+### 4.4.5 安装二进制包
+
+1.  将压缩包解压到 `usr/local` 目录下。
+2.  添加环境变量。
 
 ## 4.5 进程管理
 
@@ -769,7 +735,7 @@ systemctl <start|stop|restart|status> <服务名>
   is-enabled <服务名> # 查看服务是否自启动
 ```
 
-![](image/image_U3r8dQmOhx.png)
+![](image/image_u7VnTDThpr.png)
 
 ## 4.7 网络相关
 
@@ -808,35 +774,6 @@ wget <url>
   --limit-rate=300k   # 限制下载速度
   --spider            # 查看远程文件信息
   -e http_proxy=ip:port    # 使用代理
-```
-
-### `curl` 网络请求
-
-> 相关文章：
-> [https://www.cnblogs.com/leizia/p/16322061.html](https://www.cnblogs.com/leizia/p/16322061.html "https://www.cnblogs.com/leizia/p/16322061.html")[https://juejin.cn/post/7210320199690305596](https://juejin.cn/post/7210320199690305596 "https://juejin.cn/post/7210320199690305596")
-
-```bash
-curl <url>    # http 请求（返回响应内容）
-  -X POST  # 指定请求方法
-  -o <文件>  # 将响应内容写入文件
-  curl url > out.html  # 使用重定向保存文件
-  -O  # 以服务器上的名称保存图片
-  curl -O http://img[1-5].jpg  # 下载指定 url 范围的文件
-  -s  # 不显示进度信息
-  -i  # 获取请求头 
-  -L  # 启用重定向
-  -T <file>  # 上传文件
-  -H "xx:xx"  # 添加请求头
-  -d "xx=xx&xx=xx"  # 提交数据
-  -d "{"xx":"xx"}"  # 提交json数据
-  -u name:passwd  # 指定用户名和密码
-  -w  # 输出指定内容
-    -w %{http_code}  # 输出状态码
-  -A ""  # 指定UA（user-agent）
-  -e <url>  # 指定 referer
-  --proxy ""  # 使用代理
-  -x <代理ip>  # 指定代理服务器
-
 ```
 
 ### 关闭防火墙
@@ -893,3 +830,4 @@ echo "$变量名"  # 引号中的变量依然发挥作用
 变量名=`命令`  # 将命令的结果赋给变量
 变量名=$(命令)  # 与 ` ` 等价
 ```
+
